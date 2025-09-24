@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>About Us - Zabalaza Security</title>
-</head>
-<body>
+{% extends "core/base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+  <div class="card inset">
+    <div class="eyebrow">Who we are</div>
     <h1>About Zabalaza Security</h1>
-    <p>Your Trusted Partner in Security Solutions</p>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About Us</a> |
-        <a href="/services/">Services</a> |
-        <a href="/clients/">Clients</a> |
-        <a href="/careers/">Careers</a> |
-        <a href="/contact/">Contact</a>
-    </nav>
-    
-    <h2>Our Mission</h2>
-    <p>At Zabalaza Security, we are committed to providing comprehensive security solutions that protect your business, assets, and people. With years of experience in the security industry, we deliver reliable and professional services tailored to your specific needs.</p>
-    
-    <h2>Why Choose Us</h2>
-    <ul>
-        <li>Experienced and trained security professionals</li>
-        <li>24/7 monitoring and response capabilities</li>
-        <li>Customized security solutions</li>
-        <li>Proven track record of excellence</li>
-    </ul>
-</body>
-</html>
+    <p class="muted">Your trusted partner for comprehensive security solutions.</p>
+  </div>
+  <div class="grid" style="margin-top:16px;">
+    <div class="card">
+      <h3>Mission</h3>
+      <p>Protect people and property with professionalism, integrity, and vigilance.</p>
+    </div>
+    <div class="card">
+      <h3>Certifications</h3>
+      <p class="muted">PSIRA registered, first-aid certified, and continuous training compliance.</p>
+    </div>
+    <div class="card">
+      <h3>Our Team</h3>
+      <p class="muted">Experienced leadership and trained officers serving 24/7.</p>
+    </div>
+  </div>
+{% endblock %}
+
 
 

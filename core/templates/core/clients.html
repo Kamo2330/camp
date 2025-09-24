@@ -1,40 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Our Clients - Zabalaza Security</title>
-</head>
-<body>
-    <h1>Our Valued Clients</h1>
-    <p>Trusted by Businesses Across Various Industries</p>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About Us</a> |
-        <a href="/services/">Services</a> |
-        <a href="/clients/">Clients</a> |
-        <a href="/careers/">Careers</a> |
-        <a href="/contact/">Contact</a>
-    </nav>
-    
-    <h2>Industries We Serve</h2>
-    
-    <h3>Corporate & Office Buildings</h3>
-    <p>Providing comprehensive security solutions for corporate headquarters, office complexes, and business centers.</p>
-    
-    <h3>Retail & Shopping Centers</h3>
-    <p>Protecting retail establishments, shopping malls, and commercial properties with professional security services.</p>
-    
-    <h3>Healthcare Facilities</h3>
-    <p>Specialized security services for hospitals, clinics, and healthcare institutions ensuring patient and staff safety.</p>
-    
-    <h3>Educational Institutions</h3>
-    <p>School security solutions including campus patrol, access control, and emergency response services.</p>
-    
-    <h3>Residential Communities</h3>
-    <p>Gated community security, apartment complex protection, and residential property monitoring.</p>
-    
-    <h2>Client Testimonials</h2>
-    <p><em>"Zabalaza Security has been our trusted partner for over 3 years. Their professionalism and reliability are unmatched."</em> - Corporate Client</p>
-</body>
-</html>
+{% extends "core/base.html" %}
+{% block title %}Clients{% endblock %}
+{% block content %}
+  <div class="card inset">
+    <div class="eyebrow">Trusted by many</div>
+    <h1>Our Clients</h1>
+    <p class="muted">Reliable protection across industries.</p>
+  </div>
+  <div class="grid" style="margin-top:16px;">
+    <div class="card"><h3>Corporate</h3><p class="muted">Head offices, business parks, and logistics facilities.</p></div>
+    <div class="card"><h3>Retail</h3><p class="muted">Shopping centres, supermarkets, and high-street stores.</p></div>
+    <div class="card"><h3>Healthcare</h3><p class="muted">Hospitals and clinics with sensitive environments.</p></div>
+    <div class="card"><h3>Education</h3><p class="muted">Schools and campuses requiring safe learning spaces.</p></div>
+    <div class="card"><h3>Residential</h3><p class="muted">Gated estates and apartment complexes.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <h3>What Clients Say</h3>
+    <p><em>“Professional and reliable — our first choice for security.”</em></p>
+  </div>
+{% endblock %}
+
 
 

@@ -1,48 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Careers - Zabalaza Security</title>
-</head>
-<body>
-    <h1>Join Our Security Team</h1>
-    <p>Build a Rewarding Career in Security Services</p>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About Us</a> |
-        <a href="/services/">Services</a> |
-        <a href="/clients/">Clients</a> |
-        <a href="/careers/">Careers</a> |
-        <a href="/contact/">Contact</a>
-    </nav>
-    
-    <h2>Why Work With Us?</h2>
-    <ul>
-        <li>Competitive salary and benefits</li>
-        <li>Professional development opportunities</li>
-        <li>Flexible scheduling options</li>
-        <li>Supportive team environment</li>
-        <li>Career advancement opportunities</li>
-    </ul>
-    
-    <h2>Available Positions</h2>
-    
-    <h3>Security Officers</h3>
-    <p>We are seeking qualified security officers for various locations. Requirements include valid security license and clean background check.</p>
-    
-    <h3>Supervisors</h3>
-    <p>Experienced security professionals needed for supervisory roles. Leadership experience and advanced training preferred.</p>
-    
-    <h3>Mobile Patrol Officers</h3>
-    <p>Join our mobile patrol team. Valid driver's license and security experience required.</p>
-    
-    <h3>Event Security Specialists</h3>
-    <p>Specialized security personnel for events and special occasions. Flexible schedule and excellent customer service skills needed.</p>
-    
-    <h2>How to Apply</h2>
-    <p>Send your resume and cover letter to our HR department. We review applications regularly and contact qualified candidates for interviews.</p>
-    
-    <p><strong>Contact us today to start your security career!</strong></p>
-</body>
-</html>
+{% extends "core/base.html" %}
+{% block title %}Careers{% endblock %}
+{% block content %}
+  <div class="card inset">
+    <div class="eyebrow">Work with us</div>
+    <h1>Join Our Team</h1>
+    <p class="muted">Grow your career with Zabalaza Security.</p>
+  </div>
+  <div class="grid" style="margin-top:16px;">
+    <div class="card">
+      <h3>Benefits</h3>
+      <ul>
+        <li>Competitive pay</li>
+        <li>Training and certification</li>
+        <li>Career progression</li>
+        <li>Supportive leadership</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Open Roles</h3>
+      <ul>
+        <li>Security Officers (Armed/Unarmed)</li>
+        <li>Supervisors</li>
+        <li>Mobile Patrol Officers</li>
+        <li>Event Security</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <h3>Apply Now</h3>
+    <p>Send your CV to <a href="mailto:careers@lookaroundsecurity.com">careers@lookaroundsecurity.com</a>.</p>
+  </div>
+{% endblock %}
+
 
 

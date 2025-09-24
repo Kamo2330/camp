@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Zabalaza Security</title>
-</head>
-<body>
-    <h1>Welcome to Zabalaza Security</h1>
-    <p>Trusted Security Services for Your Safety</p>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About Us</a> |
-        <a href="/services/">Services</a> |
-        <a href="/clients/">Clients</a> |
-        <a href="/careers/">Careers</a> |
-        <a href="/contact/">Contact</a>
-    </nav>
-</body>
-</html>
+{% extends "core/base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  <section class="hero">
+    <div class="card inset" style="flex:1; min-width:280px;">
+      <div class="eyebrow">Security you can trust</div>
+      <h1 class="title">Welcome to Zabalaza Security</h1>
+      <p class="muted">Trusted security services for your people, property, and peace of mind.</p>
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="/contact/">Request a Quote</a>
+        <a class="btn ghost" href="/careers/">Join Our Team</a>
+      </div>
+    </div>
+  </section>
+  <section class="grid">
+    <div class="card"><h3>Professional Guarding</h3><p class="muted">Vetted, trained, and supervised guards on-site 24/7.</p></div>
+    <div class="card"><h3>Mobile Patrols</h3><p class="muted">Visible deterrence with rapid response capability.</p></div>
+    <div class="card"><h3>CCTV & Monitoring</h3><p class="muted">Proactive surveillance with incident reporting.</p></div>
+    <div class="card"><h3>Event Security</h3><p class="muted">Crowd management and VIP protection for any size event.</p></div>
+  </section>
+{% endblock %}
+
 
 

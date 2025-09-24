@@ -1,46 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Services - Zabalaza Security</title>
-</head>
-<body>
+{% extends "core/base.html" %}
+{% block title %}Services{% endblock %}
+{% block content %}
+  <div class="card inset">
+    <div class="eyebrow">What we do</div>
     <h1>Our Security Services</h1>
-    <p>Comprehensive Security Solutions for Every Need</p>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About Us</a> |
-        <a href="/services/">Services</a> |
-        <a href="/clients/">Clients</a> |
-        <a href="/careers/">Careers</a> |
-        <a href="/contact/">Contact</a>
-    </nav>
-    
-    <h2>Security Services We Offer</h2>
-    
-    <h3>Physical Security</h3>
-    <ul>
-        <li>Armed and unarmed security guards</li>
-        <li>Mobile patrol services</li>
-        <li>Access control systems</li>
-        <li>Surveillance monitoring</li>
-    </ul>
-    
-    <h3>Event Security</h3>
-    <ul>
-        <li>Corporate events</li>
-        <li>Private parties</li>
-        <li>Public gatherings</li>
-        <li>VIP protection</li>
-    </ul>
-    
-    <h3>Consulting Services</h3>
-    <ul>
-        <li>Security assessments</li>
-        <li>Risk management</li>
-        <li>Emergency response planning</li>
-        <li>Training programs</li>
-    </ul>
-</body>
-</html>
+    <p class="muted">Tailored protection for businesses, estates, and events.</p>
+  </div>
+  <div class="grid" style="margin-top:16px;">
+    <div class="card"><h3>Guarding</h3><p class="muted">Armed and unarmed guards, access control, visitor management.</p></div>
+    <div class="card"><h3>Patrols</h3><p class="muted">Marked vehicle patrols and perimeter inspections.</p></div>
+    <div class="card"><h3>CCTV</h3><p class="muted">Installation, monitoring, and incident escalation.</p></div>
+    <div class="card"><h3>Armed Response</h3><p class="muted">Rapid response and alarm verification.</p></div>
+    <div class="card"><h3>Event Security</h3><p class="muted">Crowd control, bag checks, artist/VIP protection.</p></div>
+    <div class="card"><h3>Consulting</h3><p class="muted">Risk assessments, SOPs, emergency planning, and training.</p></div>
+  </div>
+{% endblock %}
+
 
 

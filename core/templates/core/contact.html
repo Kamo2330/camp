@@ -1,51 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contact Us - Zabalaza Security</title>
-</head>
-<body>
-    <h1>Contact Zabalaza Security</h1>
-    <p>Get in Touch for Your Security Needs</p>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About Us</a> |
-        <a href="/services/">Services</a> |
-        <a href="/clients/">Clients</a> |
-        <a href="/careers/">Careers</a> |
-        <a href="/contact/">Contact</a>
-    </nav>
-    
-    <h2>Get a Free Security Consultation</h2>
-    <p>Contact us today for a comprehensive security assessment and customized solution for your business or property.</p>
-    
-    <h2>Contact Information</h2>
-    
-    <h3>Phone</h3>
-    <p>Emergency: (555) 911-SECURITY<br>
-    Office: (555) 123-SECURE</p>
-    
-    <h3>Email</h3>
-    <p>General Inquiries: info@zabalazasecurity.com<br>
-    Sales: sales@zabalazasecurity.com<br>
-    Careers: careers@zabalazasecurity.com</p>
-    
-    <h3>Office Address</h3>
-    <p>Zabalaza Security Services<br>
-    123 Security Plaza<br>
-    Business District<br>
-    City, State 12345</p>
-    
-    <h3>Business Hours</h3>
-    <p>Monday - Friday: 8:00 AM - 6:00 PM<br>
-    Saturday: 9:00 AM - 4:00 PM<br>
-    Sunday: Emergency Services Only</p>
-    
-    <h2>24/7 Emergency Response</h2>
-    <p>Our security services operate 24/7. For immediate security concerns or emergencies, call our emergency hotline.</p>
-    
-    <h2>Request a Quote</h2>
-    <p>Ready to secure your property? Contact us for a free, no-obligation quote tailored to your specific security needs.</p>
-</body>
-</html>
+{% extends "core/base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+  <div class="card inset">
+    <div class="eyebrow">Get in touch</div>
+    <h1>Contact Us</h1>
+    <p class="muted">We respond promptly to all inquiries.</p>
+  </div>
+  <div class="grid" style="margin-top:16px;">
+    <div class="card">
+      <h3>Phone</h3>
+      <p>Emergency: (555) 911-SECURITY<br>Office: (555) 123-SECURE</p>
+    </div>
+    <div class="card">
+      <h3>Email</h3>
+      <p>info@lookaroundsecurity.com<br>sales@lookaroundsecurity.com</p>
+    </div>
+    <div class="card">
+      <h3>Address</h3>
+      <p>123 Security Plaza, Business District</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <h3>Request a Quote</h3>
+    <p>Tell us about your needs and we’ll tailor a solution for you.</p>
+    <a class="btn" href="mailto:sales@lookaroundsecurity.com">Email Sales</a>
+  </div>
+{% endblock %}
+
 
 
