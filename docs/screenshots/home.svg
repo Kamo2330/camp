@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <rect width="1200" height="720" fill="#0a0a0a"/>
+  <rect x="0" y="0" width="1200" height="72" fill="#0a0a0a" stroke="#1a1a1a"/>
+  <rect x="28" y="18" width="36" height="36" rx="8" fill="#e11d2e"/>
+  <text x="46" y="42" fill="white" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">C</text>
+  <text x="76" y="42" fill="#f5f5f5" font-family="Arial" font-size="18" font-weight="bold">Camp Security</text>
+  <text x="900" y="42" fill="#f5f5f5" font-family="Arial" font-size="14">Home  About  Services  Clients  Careers  Contact</text>
+  <rect x="28" y="100" width="1144" height="180" rx="14" fill="#0e0e10" stroke="#1f1f22"/>
+  <text x="50" y="135" fill="#e11d2e" font-family="Arial" font-size="12" font-weight="bold">SECURITY YOU CAN TRUST</text>
+  <text x="50" y="175" fill="#f5f5f5" font-family="Arial" font-size="32" font-weight="bold">Welcome to Camp Security</text>
+  <text x="50" y="210" fill="#c8c8c8" font-family="Arial" font-size="16">Trusted security services for your people, property, and peace of mind.</text>
+  <rect x="50" y="230" width="140" height="40" rx="10" fill="#e11d2e"/>
+  <text x="120" y="255" fill="white" font-family="Arial" font-size="14" text-anchor="middle">Request a Quote</text>
+  <rect x="50" y="310" width="260" height="120" rx="14" fill="#0e0e10" stroke="#1f1f22"/>
+  <rect x="330" y="310" width="260" height="120" rx="14" fill="#0e0e10" stroke="#1f1f22"/>
+  <rect x="610" y="310" width="260" height="120" rx="14" fill="#0e0e10" stroke="#1f1f22"/>
+  <rect x="890" y="310" width="260" height="120" rx="14" fill="#0e0e10" stroke="#1f1f22"/>
+  <text x="70" y="345" fill="#f5f5f5" font-family="Arial" font-size="16" font-weight="bold">Professional Guarding</text>
+  <text x="350" y="345" fill="#f5f5f5" font-family="Arial" font-size="16" font-weight="bold">Mobile Patrols</text>
+  <text x="630" y="345" fill="#f5f5f5" font-family="Arial" font-size="16" font-weight="bold">CCTV &amp; Monitoring</text>
+  <text x="910" y="345" fill="#f5f5f5" font-family="Arial" font-size="16" font-weight="bold">Event Security</text>
+</svg>
