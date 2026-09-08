@@ -19,21 +19,21 @@ export default function Error({
       {isConnectionError ? (
         <p className="muted">
           The frontend could not connect to the Django API at{' '}
-          <code>http://localhost:8000/api</code>. Start the backend in a separate terminal:
+          <code>{process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'}</code>. From the camp folder run:
         </p>
       ) : (
         <p className="muted">{error.message}</p>
       )}
       {isConnectionError && (
         <pre className="mt-4 overflow-x-auto rounded-lg border border-soft-border bg-surface p-4 text-sm text-muted">
-          {`cd C:\\Users\\Admin\\Desktop\\camp\\backend
-.venv\\Scripts\\activate
+          {`cd camp
+backend\\.venv\\Scripts\\activate
 python manage.py runserver`}
         </pre>
       )}
       <p className="muted mt-4">
         Website: <strong>http://localhost:3000</strong> &nbsp;|&nbsp; API:{' '}
-        <strong>http://localhost:8000/api/health/</strong>
+        <strong>{process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'}/health/</strong>
       </p>
       <button type="button" onClick={reset} className="btn mt-4">
         Try again

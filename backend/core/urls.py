@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    ChatAssistantView,
     ContactInquiryCreateView,
     HealthCheckView,
     IndustryListView,
@@ -16,4 +17,5 @@ urlpatterns = [
     path('industries/', IndustryListView.as_view(), name='industry-list'),
     path('jobs/', JobOpeningListView.as_view(), name='job-list'),
     path('contact/', ContactInquiryCreateView.as_view(), name='contact-create'),
+    path('chat/', ChatAssistantView.as_view(), name='chat-assistant'),
 ]

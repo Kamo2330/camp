@@ -1,17 +1,24 @@
+import os
+
 from django.contrib import admin
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import include, path
 
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
 
-def api_root(_request):
+
+def api_root(request):
+    if 'text/html' in request.headers.get('Accept', ''):
+        return HttpResponseRedirect(FRONTEND_URL)
     return JsonResponse(
         {
             'message': 'Camp Security API',
-            'frontend': 'http://localhost:3000',
+            'frontend': FRONTEND_URL,
             'endpoints': {
                 'health': '/api/health/',
                 'site': '/api/site/',
                 'services': '/api/services/',
+                'chat': '/api/chat/',
                 'admin': '/admin/',
             },
         }

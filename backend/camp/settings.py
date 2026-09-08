@@ -3,7 +3,9 @@ Django settings for camp project.
 """
 
 import os
+import socket
 import sys
+import urllib.parse
 from pathlib import Path
 
 import dj_database_url
@@ -64,12 +66,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'camp.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://camp:camp@localhost:5433/camp',
-        conn_max_age=600,
-    )
-}
+
+def _local_postgres_is_up(database_url: str) -> bool:
+    parsed = urllib.parse.urlparse(database_url)
+    host = parsed.hostname or 'localhost'
+    port = parsed.port or 5432
+    if host.lower() not in ('localhost', '127.0.0.1', '::1'):
+        return True
+    try:
+        with socket.create_connection((host, int(port)), timeout=0.4):
+            return True
+    except OSError:
+        return False
+
 
 if 'test' in sys.argv:
     DATABASES = {
@@ -78,6 +87,24 @@ if 'test' in sys.argv:
             'NAME': ':memory:',
         }
     }
+else:
+    database_url = os.environ.get('DATABASE_URL', 'postgres://camp:camp@localhost:5433/camp')
+    production = os.environ.get('RENDER') or not DEBUG
+    if production or _local_postgres_is_up(database_url):
+        DATABASES = {
+            'default': dj_database_url.parse(database_url, conn_max_age=600),
+        }
+    else:
+        print(
+            'Local PostgreSQL is not running. Using SQLite so you can test '
+            'without Docker. (Optional later: docker compose up -d)'
+        )
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},

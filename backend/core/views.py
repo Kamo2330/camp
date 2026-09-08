@@ -1,8 +1,9 @@
 from django.conf import settings
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .chat import get_reply
 from .models import ContactInquiry, Industry, JobOpening, Service
 from .serializers import (
     ContactInquirySerializer,
@@ -111,3 +112,18 @@ class SiteContentView(APIView):
 class HealthCheckView(APIView):
     def get(self, request):
         return Response({'status': 'ok', 'service': 'camp-api'})
+
+
+class ChatAssistantView(APIView):
+    """Site chat assistant (FAQ by default; LLM if GROQ_API_KEY / OPENAI_API_KEY is set)."""
+
+    def post(self, request):
+        message = request.data.get('message', '')
+        if not isinstance(message, str):
+            return Response(
+                {'detail': 'message must be a string'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        prefer_llm = request.data.get('prefer_llm', True)
+        result = get_reply(message, prefer_llm=bool(prefer_llm))
+        return Response(result)

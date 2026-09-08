@@ -1,11 +1,15 @@
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+"""Django entry point so you can run manage.py from the repo root."""
 import os
 import sys
+from pathlib import Path
 
 
 def main():
-    """Run administrative tasks."""
+    backend = Path(__file__).resolve().parent / 'backend'
+    os.chdir(backend)
+    sys.path.insert(0, str(backend))
+
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'camp.settings')
     if 'runserver' in sys.argv:
         from camp.frontend_dev import configure_runserver_port, ensure_frontend

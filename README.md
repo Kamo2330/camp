@@ -25,7 +25,7 @@ Small and mid-size security firms often rely on static brochure sites with no wa
 | **Frontend** | Next.js 15 App Router, Tailwind CSS, responsive dark theme, 6 pages, contact form with API integration |
 | **Backend** | Django 5 + DRF, REST endpoints for services/industries/jobs/site content, contact inquiry POST endpoint |
 | **Database** | PostgreSQL models for services, industries, job openings, and contact inquiries |
-| **DevOps** | Docker Compose for local Postgres, Render blueprint, Vercel config, environment-based settings |
+| **DevOps** | Render blueprint, Vercel config, environment-based settings; Docker Compose optional for Postgres |
 | **Quality** | API test suite, seed command, `.gitignore`, MIT license |
 
 ---
@@ -36,7 +36,7 @@ Small and mid-size security firms often rely on static brochure sites with no wa
 |---|---|
 | Frontend | Next.js 15, React 19, TypeScript, Tailwind CSS |
 | Backend | Django 5, Django REST Framework |
-| Database | PostgreSQL 16 |
+| Database | PostgreSQL in production; SQLite locally (no Docker required) |
 | Deployment | Vercel (frontend) + Render / Railway / Fly.io (backend) |
 | Tooling | Docker Compose, Gunicorn, WhiteNoise |
 
@@ -50,6 +50,7 @@ Small and mid-size security firms often rely on static brochure sites with no wa
 - **Clients** — industries served + testimonial
 - **Careers** — open roles and benefits from the API
 - **Contact** — contact details + working inquiry form (saved to DB)
+- **AI chat assistant** — floating site chatbot (`POST /api/chat/`) answers FAQs; optional LLM if `GROQ_API_KEY` or `OPENAI_API_KEY` is set
 - **Admin** — Django admin for content and inquiry management
 - **Health check** — `GET /api/health/` for deployment monitoring
 
@@ -73,6 +74,7 @@ After running locally, replace these with real PNG captures:
 
 ```
 camp/
+├── manage.py         # Run Django from the repo root
 ├── backend/          # Django REST API
 │   ├── camp/         # Project settings
 │   ├── core/         # Models, serializers, views, tests
@@ -98,17 +100,17 @@ camp/
 
 - Python 3.11+
 - Node.js 20+
-- Docker (for PostgreSQL) or a local Postgres instance
 
-### 1. Clone and start PostgreSQL
+Docker is **optional**. If Postgres is not running, the API uses SQLite.
+
+### 1. Clone
 
 ```bash
-git clone <your-repo-url>
-cd camp
-docker compose up -d
+git clone https://github.com/Kamo2330/Zabalaza.git
+cd Zabalaza
 ```
 
-### 2. Backend
+### 2. Backend and website
 
 ```bash
 cd backend
@@ -121,15 +123,21 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
-cp .env.example .env
+copy .env.example .env
+cd ..
 python manage.py migrate
 python manage.py seed_data
 python manage.py runserver
 ```
 
-API runs at **http://localhost:8000/api/**
+`python manage.py runserver` starts the API **and** the website.
 
-### 3. Frontend
+- Website: **http://localhost:3000**
+- API: the URL printed in the terminal (often **http://localhost:9000/api/** on Windows if 8000 is reserved)
+
+### 3. Frontend (optional)
+
+You do not need a second terminal. To start the Next.js app by itself:
 
 ```bash
 cd frontend
@@ -138,13 +146,21 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Frontend runs at **http://localhost:3000**
-
 ### Windows notes
 
 - Use `copy .env.example .env` instead of `cp` in Command Prompt.
 - Do **not** paste lines starting with `#` — CMD treats them as commands.
 - If port 5432 is already in use (common with a local PostgreSQL install), this project uses **5433** for Docker Postgres.
+- If you see `You don't have permission to access that port`, Windows (Hyper-V / WinNAT) has reserved port 8000. `python manage.py runserver` will pick a free port instead (usually **9000**). Open the URL it prints.
+- Docker is optional. The API uses SQLite when Postgres is not running.
+
+### Optional: PostgreSQL with Docker
+
+```bash
+docker compose up -d
+```
+
+Then set `DATABASE_URL=postgres://camp:camp@localhost:5433/camp` in `backend/.env` and migrate again.
 
 ### Troubleshooting: database connection failed
 
@@ -181,7 +197,7 @@ DATABASE_URL=postgres://camp:camp@localhost:5433/camp
 | `SECRET_KEY` | Django secret key | `your-random-secret` |
 | `DEBUG` | Debug mode | `True` (dev) / `False` (prod) |
 | `ALLOWED_HOSTS` | Comma-separated hosts | `localhost,127.0.0.1,your-api.onrender.com` |
-| `DATABASE_URL` | PostgreSQL connection URL | `postgres://camp:camp@localhost:5433/camp` |
+| `DATABASE_URL` | Optional Postgres URL. If unset or Postgres is down, SQLite is used. | `postgres://camp:camp@localhost:5433/camp` |
 | `CORS_ALLOWED_ORIGINS` | Frontend origins | `http://localhost:3000,https://your-app.vercel.app` |
 | `CONTACT_EMAIL` | Info email shown on site | `info@campsecurity.com` |
 | `SALES_EMAIL` | Sales email | `sales@campsecurity.com` |
@@ -211,7 +227,6 @@ DATABASE_URL=postgres://camp:camp@localhost:5433/camp
 ## Running Tests
 
 ```bash
-cd backend
 python manage.py test core
 ```
 

@@ -85,7 +85,7 @@ async function fetchApi<T>(path: string, options?: RequestInit): Promise<T> {
     });
   } catch {
     throw new Error(
-      `Could not connect to API at ${API_URL}. Is the Django backend running on port 8000?`
+      `Could not connect to API at ${API_URL}. Is the Django backend running?`
     );
   }
   if (!res.ok) {
@@ -124,4 +124,25 @@ export async function submitContact(data: {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.message || 'Failed to submit inquiry');
   }
+}
+
+export type ChatResponse = { reply: string; mode: string };
+
+export async function sendChatMessage(message: string): Promise<ChatResponse> {
+  let res: Response;
+  try {
+    res = await fetch(`${API_URL}/chat/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+  } catch {
+    throw new Error(
+      `Could not connect to API at ${API_URL}. Is the Django backend running?`
+    );
+  }
+  if (!res.ok) {
+    throw new Error(`Chat API error: ${res.status}`);
+  }
+  return res.json();
 }
